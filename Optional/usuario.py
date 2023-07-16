@@ -14,9 +14,9 @@ class Usuario:
         print(f"El saldo actual de {self.nombre} es de: ${self.monto_cuenta}")
         
 
-def hacer_tranferencia(monto, se_descuenta, aumenta):
-    se_descuenta.monto_cuenta -= monto
-    aumenta.monto_cuenta += monto
+def hacer_tranferencia(monto, cuenta_a_descontar, cuenta_a_aumentar):
+    cuenta_a_descontar.hacer_retiro(monto)
+    cuenta_a_aumentar.hacer_deposito(monto)
 
 
 Usuario1 = Usuario("Diego Caceres", "Encarnacion")
