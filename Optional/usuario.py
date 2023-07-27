@@ -1,20 +1,63 @@
+# from Core.cuenta_bancaria import CuentaBancaria no funciona // TODO
+
+class CuentaBancaria:
+    
+    instancias = []
+    
+    def __init__(self, balance_inicial = 0, interes_inicial = 0.01):
+        self.balance = balance_inicial
+        self.interes = interes_inicial
+        self.instancias.append(self)
+    
+    def deposito(self, amount):
+        self.balance += amount
+        return self
+    
+    def retiro(self, amount):
+        
+        if(self.balance < amount):
+            print("Fondos insuficientes")
+            self.balance -= 5
+            return self
+        else:
+            self.balance -= amount
+            return self
+
+    def mostrar_info_cuenta(self):
+        
+        print(f"Balance: {self.balance}")
+        return self
+
+    
+    def generar_interés(self):
+        interes = self.balance * self.interes
+        self.balance += interes
+        return self
+    
+
+    @classmethod    
+    def mostrar_instancias(cls):
+        for instancia in cls.instancias:
+            print(instancia)
+
+
 class Usuario:
     def __init__(self, name, ciudad="Encarnacion"):
         self.nombre = name
         self.ciudad = ciudad
-        self.monto_cuenta = 0
+        self.monto_cuenta = CuentaBancaria(0)
 
     def hacer_deposito(self, monto):
-        self.monto_cuenta += monto
+        self.monto_cuenta.deposito(monto)
         return self
 
     def hacer_retiro(self, monto):
-        self.monto_cuenta -= monto
+        self.monto_cuenta.retiro(monto)
         return self
 
 
     def ver_balance(self):
-        print(f"El saldo actual de {self.nombre} es de: ${self.monto_cuenta}")
+        self.monto_cuenta.mostrar_info_cuenta()
         return self
 
 
