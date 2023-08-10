@@ -42,9 +42,11 @@ class CuentaBancaria:
 cuenta1 = CuentaBancaria()
 cuenta2 = CuentaBancaria()
 
-cuenta1.deposito(500).deposito(300).deposito(400).retiro(250).generar_interés().mostrar_info_cuenta()
 
-cuenta2.deposito(800).deposito(1000).retiro(100).retiro(500).retiro(300).retiro(200).mostrar_info_cuenta()
+if __name__ == "__main__":
+    cuenta1.deposito(500).deposito(300).deposito(400).retiro(250).generar_interés().mostrar_info_cuenta()
 
-CuentaBancaria.mostrar_instancias()
+    cuenta2.deposito(800).deposito(1000).retiro(100).retiro(500).retiro(300).retiro(200).mostrar_info_cuenta()
+
+    CuentaBancaria.mostrar_instancias()
 
